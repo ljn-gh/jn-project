@@ -1,0 +1,44 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    url: 
+    username: 
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 33
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: HikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+  
+  elasticsearch:
+    rest:
+      urls: http://localhost:9200
+  
+  
+#  aop:
+#    proxy-target-class: false
+#  level:
+#    org.springframework.aop: debug
+#    org.springframework.cglib: debug
+    
+
+xxl:
+  job:
+    admin: 
+      address: http://localhost:9090/xxl-job-admin
+    executor:
+      appname: executor-demo
+      address:
+      ip: localhost
+      port: 9998
+      logretentionday: -1
+      logPath: D:\Codes\logs
+    accessToken: default_token
