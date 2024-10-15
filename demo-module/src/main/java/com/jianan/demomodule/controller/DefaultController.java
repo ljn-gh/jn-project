@@ -1,7 +1,6 @@
 package com.jianan.demomodule.controller;
 
-import com.jianan.demomodule.test.service.DefaultService;
-import com.jianan.demomodule.test.service.IDefaultService;
+import com.jianan.demomodule.service.IDefaultService;
 import com.jianan.demomodule.test.springevent.CustomEvent;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;

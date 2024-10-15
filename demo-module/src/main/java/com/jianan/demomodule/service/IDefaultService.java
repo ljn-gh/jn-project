@@ -1,4 +1,4 @@
-package com.jianan.demomodule.test.service;
+package com.jianan.demomodule.service;
 
 /**
  * @Author: jn

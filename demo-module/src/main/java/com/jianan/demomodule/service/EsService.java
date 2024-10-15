@@ -1,4 +1,4 @@
-package com.jianan.demomodule.test.service;
+package com.jianan.demomodule.service;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;

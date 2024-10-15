@@ -22,13 +22,17 @@ spring:
     rest:
       urls: http://localhost:9200
   
-  
-#  aop:
+  activiti:
+    database-schema-update: true
+    process-definition-location-prefix: classpath:/processes/
+    
+    
+    
+    #  aop:
 #    proxy-target-class: false
 #  level:
 #    org.springframework.aop: debug
 #    org.springframework.cglib: debug
-    
 
 xxl:
   job:

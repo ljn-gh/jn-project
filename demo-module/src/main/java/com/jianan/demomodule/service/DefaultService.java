@@ -1,4 +1,4 @@
-package com.jianan.demomodule.test.service;
+package com.jianan.demomodule.service;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
