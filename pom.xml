@@ -9,6 +9,8 @@
     <description>jn-project</description>
     <modules>
         <module>activiti6</module>
+        <module>demo-module</module>
+        <module>xxl-job-admin</module>
     </modules>
     <packaging>pom</packaging>
     <url/>
@@ -17,7 +19,7 @@
     </licenses>
     <developers>
         <developer/>
-    </developers>
+    </developers>  
     <scm>
         <connection/>
         <developerConnection/>
@@ -28,7 +30,7 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <spring-boot.version>3.1.5</spring-boot.version>
+        <spring-boot.version>2.7.18</spring-boot.version>
     </properties>
     <dependencyManagement>
         <dependencies>
