@@ -26,8 +26,15 @@ spring:
     database-schema-update: true
     process-definition-location-prefix: classpath:/processes/
     
-    
-    
+camunda:
+  bpm:
+    database:
+      type: mysql
+      schema-update: true
+    auto-deployment-enabled: true # 自动部署 resources 下的 bpmn文件
+    admin-user:
+      id: demo
+      password: demo
     #  aop:
 #    proxy-target-class: false
 #  level:
