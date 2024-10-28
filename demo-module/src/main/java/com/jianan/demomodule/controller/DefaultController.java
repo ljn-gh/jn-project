@@ -3,6 +3,8 @@ package com.jianan.demomodule.controller;
 import com.jianan.demomodule.service.IDefaultService;
 import com.jianan.demomodule.test.springevent.CustomEvent;
 import javax.servlet.http.HttpServletResponse;
+
+import com.jianan.demomodule.test.transaction.TransactionTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,9 @@ public class DefaultController {
     
     @Autowired
     private IDefaultService service;
+    
+    @Autowired
+    private TransactionTest transactionTest;
     @PostMapping("index")
     public void index(HttpServletRequest request) {
         String requestURI = request.getRequestURI();
@@ -54,6 +59,10 @@ public class DefaultController {
         service.insert();
     }
 
+    @GetMapping("transaction")
+    public void transaction() {
+        transactionTest.test();
+    }
     public static void main(String[] args) {
         double a = 0.0000221;
         NumberFormat nf = NumberFormat.getPercentInstance();
