@@ -3,7 +3,6 @@ package com.jianan.demomodule;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.annotation.MapperScans;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -12,7 +11,7 @@ import java.sql.SQLException;
 
 @SpringBootApplication
 @MapperScan(
-        basePackages = "com.jianan.demomodule.Mapper"
+        basePackages = "com.jianan.demomodule.mapper"
 )
 public class DemoModuleApplication {
 

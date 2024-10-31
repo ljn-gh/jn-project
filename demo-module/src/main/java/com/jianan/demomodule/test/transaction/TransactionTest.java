@@ -1,13 +1,13 @@
 package com.jianan.demomodule.test.transaction;
 
-import com.jianan.demomodule.Mapper.UserMapper;
+import com.jianan.demomodule.mapper.UserMapper;
+import com.jianan.demomodule.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -21,7 +21,7 @@ public class TransactionTest {
     private UserMapper userMapper;
     @Transactional
     public void test(){
-        userMapper.insert();
+        userMapper.insert(new User());
         TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
             @Override
             public void afterCommit() {

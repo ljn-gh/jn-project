@@ -1,0 +1,10 @@
+<!-- mybatis 文件--> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jianan.demomodule.mapper.UserMapper">
+
+    <select id="selectAll" resultType="com.jianan.demomodule.model.User">
+        select * from user limit 10
+    </select>
+
+</mapper>
+<!-- mybatis 文件-->

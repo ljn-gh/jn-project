@@ -53,3 +53,8 @@ xxl:
       logretentionday: -1
       logPath: D:\Codes\logs
     accessToken: default_token
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

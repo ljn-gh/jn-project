@@ -1,5 +1,9 @@
 package com.jianan.demomodule.service;
 
+import com.jianan.demomodule.model.User;
+
+import java.util.List;
+
 /**
  * @Author: jn
  * @Date: 2024/7/22
@@ -7,4 +11,11 @@ package com.jianan.demomodule.service;
  **/
 public interface IDefaultService{
     void insert();
+    
+    List<User> selectAll();
+    
+    List<User> selectAll(int pageNum, int pageSize);
+    
+    String insertUser();
+
 }
