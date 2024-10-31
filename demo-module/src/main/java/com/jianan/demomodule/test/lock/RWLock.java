@@ -21,13 +21,7 @@ public class RWLock {
     public static void main(String[] args) {
         new Thread(()->{
             while (true){
-                boolean b = false;
-                try {
-                    b = rlock.tryLock(5, TimeUnit.SECONDS);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                if(b){
+                if(rlock.tryLock()){
                     try {
                         System.out.println(Thread.currentThread().getName() + "获取成功" + config);
                         TimeUnit.SECONDS.sleep(new Random().nextInt(10));
@@ -45,13 +39,7 @@ public class RWLock {
 
         new Thread(()->{
             while (true){
-                boolean b = false;
-                try {
-                    b = rlock.tryLock(5, TimeUnit.SECONDS);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                if(b){
+                if(rlock.tryLock()){
                     try {
                         System.out.println(Thread.currentThread().getName() + "获取成功" + config);
                         TimeUnit.SECONDS.sleep(new Random().nextInt(10));
@@ -69,18 +57,12 @@ public class RWLock {
 
         new Thread(()->{
             while (true){
-                boolean b = false;
-                try {
-                    b = wlock.tryLock(5, TimeUnit.SECONDS);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                if(b){
+                if(wlock.tryLock()){
                     try {
                         System.out.println(Thread.currentThread().getName() + "获取成功");
                         config = Thread.currentThread().getName() + "new" + System.currentTimeMillis();
-                        System.out.println(Thread.currentThread().getName() + "修改数据为"+ config);
                         TimeUnit.SECONDS.sleep(new Random().nextInt(10)+10);
+                        System.out.println(Thread.currentThread().getName() + "修改数据为"+ config);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     } finally {
@@ -94,18 +76,12 @@ public class RWLock {
 
         new Thread(()->{
             while (true){
-                boolean b = false;
-                try {
-                    b = wlock.tryLock(5, TimeUnit.SECONDS);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                if(b){
+                if(wlock.tryLock()){
                     try {
                         System.out.println(Thread.currentThread().getName() + "获取成功");
                         config = Thread.currentThread().getName() + "new" + System.currentTimeMillis();
-                        System.out.println(Thread.currentThread().getName() + "修改数据为"+ config);
                         TimeUnit.SECONDS.sleep(new Random().nextInt(10)+10);
+                        System.out.println(Thread.currentThread().getName() + "修改数据为"+ config);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     } finally {
