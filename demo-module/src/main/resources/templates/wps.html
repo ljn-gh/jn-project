@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/js/wps/wpsjsrpcsdk.js"></script>
+    <script type="text/javascript">
+        alert("唤起wps")
+        WpsInvoke.InvokeAsHttp("wps", "WpsOAAssist","dispatcher",{},function(e){//单进程方式唤起
+            if(e.status){
+                console.log(e.message);
+                return ;
+            }
+            console.log(e.response)
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>
