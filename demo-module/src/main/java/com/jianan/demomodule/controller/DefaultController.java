@@ -1,14 +1,26 @@
 package com.jianan.demomodule.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
+import com.baomidou.mybatisplus.extension.toolkit.SqlRunner;
+import com.jianan.demomodule.mapper.UserMapper;
+import com.jianan.demomodule.model.User;
 import com.jianan.demomodule.service.IDefaultService;
+import com.jianan.demomodule.service.UserService;
 import com.jianan.demomodule.test.springevent.CustomEvent;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jianan.demomodule.test.transaction.TransactionTest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +44,15 @@ public class DefaultController {
     
     @Autowired
     private IDefaultService service;
+    
+    @Autowired
+    private UserService userService;
+    
+    @Autowired
+    private EhCacheCacheManager ehCacheCacheManager;
+    
+    @Autowired
+    private UserMapper userMapper;
     
     @Autowired
     private TransactionTest transactionTest;
@@ -70,5 +91,25 @@ public class DefaultController {
         nf.setMinimumFractionDigits(0);
         System.out.println(nf.format(a));
         System.out.println(Double.MAX_VALUE);
+    }
+    
+    
+    @Cacheable(value = "defaultCache",cacheManager = "ehCacheCacheManager",key = "#user.id" )
+    @GetMapping("cache")
+    public String cache(User user){
+        QueryWrapper wrapper = new QueryWrapper();
+        wrapper.eq("id", user.getId());
+        System.out.println("查询数据库-------------------------");
+        return JSON.toJSONString(userMapper.selectOne(wrapper));
+    }
+    
+    
+    @PostMapping("update")
+    @CacheEvict(value = "defaultCache",cacheManager = "ehCacheCacheManager",key = "#user.id")
+    public void update(@RequestBody User user){
+        UpdateWrapper update = new UpdateWrapper();
+        update.eq("id", user.getId());
+        userMapper.update(user,update);
+        System.out.println("更新数据库------------------------");
     }
 }

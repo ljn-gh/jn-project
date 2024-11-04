@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 @MapperScan(
         basePackages = "com.jianan.demomodule.mapper"
 )
+@EnableCaching
 public class DemoModuleApplication {
 
     public static void main(String[] args) {
