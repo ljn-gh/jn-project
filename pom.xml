@@ -11,6 +11,7 @@
         <module>activiti6</module>
         <module>demo-module</module>
         <module>xxl-job-admin</module>
+        <module>rocketmq-console</module>
     </modules>
     <packaging>pom</packaging>
     <url/>

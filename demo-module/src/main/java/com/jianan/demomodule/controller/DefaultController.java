@@ -1,9 +1,12 @@
 package com.jianan.demomodule.controller;
 
+import cn.hutool.core.collection.CollUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.jianan.demomodule.mapper.UserMapper;
+import com.jianan.demomodule.model.PersonalJbxx;
 import com.jianan.demomodule.model.User;
 import com.jianan.demomodule.service.IDefaultService;
 import com.jianan.demomodule.service.UserService;
@@ -107,5 +110,15 @@ public class DefaultController {
         update.eq("id", user.getId());
         userMapper.update(user,update);
         System.out.println("更新数据库------------------------");
+    }
+    
+    @RequestMapping("ztxx")
+    public String ztxx(PersonalJbxx jbxx){
+        System.out.println(jbxx.toString());
+        JSONObject j = new JSONObject();
+        j.put("code","200");
+        j.put("message","xxxx");
+        j.put("data", CollUtil.newArrayList(jbxx));
+        return JSON.toJSONString(j);
     }
 }

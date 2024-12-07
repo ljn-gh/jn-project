@@ -58,3 +58,12 @@ mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: demo-producer
+    topic: demo-topic
+  consumer:
+    group: demo-consumer
+    topic: demo-topic
